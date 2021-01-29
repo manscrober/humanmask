@@ -1,7 +1,7 @@
 # humanmask
 Uses webcam and DeepLabv3 with mobilenetv2 backbone to remove background and only show humans.
 
-Designed to be used with OBS Studio, its a zero-opacity filter on black pixels and and v4l2-sink extension to create a virtual projector, allowing the user to project their screen behind themselves. Works better than virtual backgrounds too.
+Designed to be used with OBS Studio and its zero-opacity filter on black pixels and and v4l2-sink extension to create a virtual projector, allowing the user to project their screen behind themselves. Works better than virtual backgrounds too.
 
 
 requirements:
