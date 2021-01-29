@@ -165,7 +165,6 @@ cap.set(cv2.CAP_PROP_FRAME_WIDTH,1920)
 cap.set(cv2.CAP_PROP_FRAME_HEIGHT,1080)
 cap.set(cv2.CAP_PROP_FPS,30)
 # Next line may need adjusting depending on webcam resolution
-final = np.zeros((1, 1080, 1920, 3))
 ret, frame = cap.read()
 framearr=[frame]
 rgb=model.run_once(framearr)
@@ -181,9 +180,3 @@ while True:
     camera.schedule_frame(color_and_mask)#output to camera
     end = time.time()#finish timer
     sys.stdout.write("\rmodel:%f fps  camera:%i fps." % (fpsarr[0], int(1/(end - start))) )
-
-    
-###  UNCOMMENT NEXT LINES TO SAVE THE VIDEO  ###
-#    output = np.expand_dims(both, axis=0)
-#    final = np.append(final, output, 0)
-#skvideo.io.vwrite("outputvideo111.mp4", final)
