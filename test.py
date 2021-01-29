@@ -123,7 +123,7 @@ class DeepLabModel(object):
         rgb = cv2.bitwise_and(thresh2, thresh3, thresh4)
         rgb = cv2.merge((rgb,rgb,rgb))
         return rgb
-    def run_threaded(self, framearr,rgbarr):
+    def run_threaded(self, framearr,rgbarr,fpsarr):
         while True:
             frame=framearr[0]
             start = time.time()#time processing of the frame
@@ -153,7 +153,7 @@ class DeepLabModel(object):
             rgbarr[0]=rgb
             #alpha = cv2.GaussianBlur(rgb, (7,7),0)
             end = time.time()#finish timer
-            sys.stdout.write("\r%f fps" % (1/(end - start)))
+            fpsarr[0]=(1/(end - start))
 
 model = DeepLabModel(download_path)
 
@@ -170,13 +170,17 @@ ret, frame = cap.read()
 framearr=[frame]
 rgb=model.run_once(framearr)
 rgbarr=[rgb]
-t=Thread(target=model.run_threaded, args=(framearr, rgbarr))
+fpsarr=[0]
+t=Thread(target=model.run_threaded, args=(framearr, rgbarr,fpsarr))
 t.start()
 while True:
+    start = time.time()#time processing of the frame
     ret, frame = cap.read()
     framearr[0]= cv2.cvtColor(frame, cv2.COLOR_BGR2RGB)
     color_and_mask = cv2.bitwise_and(framearr[0],rgbarr[0])
     camera.schedule_frame(color_and_mask)#output to camera
+    end = time.time()#finish timer
+    sys.stdout.write("\rmodel:%f fps  camera:%i fps." % (fpsarr[0], int(1/(end - start))) )
 
     
 ###  UNCOMMENT NEXT LINES TO SAVE THE VIDEO  ###
