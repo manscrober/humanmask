@@ -1,6 +1,7 @@
 ### THIS FILE CAN BE RUN ANYWHERE IN A TERMINAL WRITING 'python deeplab_demo_webcam_v2.py' AS LONG
 ### AS THE HELPER FILE get_dataset_colormap.py IS IN THE SAME DIRECTORY AS deeplab_demo_webcam_v2.py
-
+## adapted from antonio verdones blogpost https://averdones.github.io/real-time-semantic-image-segmentation-with-deeplab-in-tensorflow/
+ 
 ## Imports
 
 import collections
