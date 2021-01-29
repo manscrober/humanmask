@@ -14,8 +14,6 @@ import time
 import pyfakewebcam
 import sys
 from threading import Thread, Event
-from matplotlib import gridspec
-from matplotlib import pyplot as plt
 from time import sleep
 import numpy as np
 from PIL import Image
@@ -25,7 +23,6 @@ import cv2
 import tensorflow as tf
 
 # Needed to show segmentation colormap labels
-sys.path.append('utils')
 import get_dataset_colormap
 
 import tensorflow as tf
@@ -39,7 +36,6 @@ _MODEL_URLS = {
 _TARBALL_NAME = 'deeplabv3_mnv2_dm05_pascal_trainaug_2018_10_01.tar.gz'
 model_url = _MODEL_URLS['deeplabv3_mnv2_dm05_pascal_trainaug']
 
-model_dir = "deeplabv3_mnv2_dm05_pascal_trainaug_2018_10_01.tar.gz"
 
 download_path = "deeplabv3_mnv2_dm05_pascal_trainaug_2018_10_01.tar.gz"
 '''
