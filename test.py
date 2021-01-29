@@ -143,7 +143,7 @@ class DeepLabModel(object):
             
             #print(dim," ",frame.shape[0],"x",frame.shape[1])
             seg_image = cv2.resize(seg_image, dim, interpolation = cv2.INTER_AREA)
-            # Stack horizontally color frame and mask
+            # apply threshold mask with human label color to the frame
             (r,g,b)=cv2.split(seg_image)
             ret2, thresh2 = cv2.threshold(r, 191, 255, cv2.THRESH_BINARY)
             ret3, thresh3 = cv2.threshold(g, 127, 255, cv2.THRESH_BINARY)
