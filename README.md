@@ -14,5 +14,7 @@ install  python, v4l2loopback, tensorflow-gpu, cudnn, opencv2, PIL, numpy, and p
 usage:
 
 from a terminal in the directory:
+```
 sudo modprobe v4l2loopback devices=2
 python test.py
+```
